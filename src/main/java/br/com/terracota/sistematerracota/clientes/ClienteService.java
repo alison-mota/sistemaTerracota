@@ -26,4 +26,10 @@ public class ClienteService {
         clienteRepository.save(cliente);
         return cliente;
     }
+
+    // Método que irá localizar o cliente e retornará uma exceção caso não encontre
+
+    public Cliente localizaCliente(Long clienteId) {
+        return clienteRepository.findById(clienteId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliião encontrado"));
+    }
 }
