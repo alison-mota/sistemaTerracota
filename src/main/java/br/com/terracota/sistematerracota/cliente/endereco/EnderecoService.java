@@ -1,6 +1,6 @@
-package br.com.terracota.sistematerracota.clientes.endereco;
+package br.com.terracota.sistematerracota.cliente.endereco;
 
-import br.com.terracota.sistematerracota.clientes.Cliente;
+import br.com.terracota.sistematerracota.cliente.Cliente;
 import org.springframework.stereotype.Service;
 
 @Service

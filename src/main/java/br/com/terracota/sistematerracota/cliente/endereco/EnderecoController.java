@@ -1,7 +1,7 @@
-package br.com.terracota.sistematerracota.clientes.endereco;
+package br.com.terracota.sistematerracota.cliente.endereco;
 
-import br.com.terracota.sistematerracota.clientes.Cliente;
-import br.com.terracota.sistematerracota.clientes.ClienteService;
+import br.com.terracota.sistematerracota.cliente.Cliente;
+import br.com.terracota.sistematerracota.cliente.ClienteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

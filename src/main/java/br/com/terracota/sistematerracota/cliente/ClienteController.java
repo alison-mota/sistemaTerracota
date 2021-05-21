@@ -1,7 +1,5 @@
-package br.com.terracota.sistematerracota.clientes;
+package br.com.terracota.sistematerracota.cliente;
 
-import br.com.terracota.sistematerracota.clientes.endereco.EnderecoRequest;
-import br.com.terracota.sistematerracota.clientes.endereco.EnderecoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

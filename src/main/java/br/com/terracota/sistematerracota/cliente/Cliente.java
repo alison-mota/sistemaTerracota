@@ -1,4 +1,4 @@
-package br.com.terracota.sistematerracota.clientes;
+package br.com.terracota.sistematerracota.cliente;
 
 import javax.persistence.*;
 

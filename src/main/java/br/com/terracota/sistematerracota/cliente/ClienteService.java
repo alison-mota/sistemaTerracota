@@ -1,4 +1,4 @@
-package br.com.terracota.sistematerracota.clientes;
+package br.com.terracota.sistematerracota.cliente;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -30,6 +30,6 @@ public class ClienteService {
     // Método que irá localizar o cliente e retornará uma exceção caso não encontre
 
     public Cliente localizaCliente(Long clienteId) {
-        return clienteRepository.findById(clienteId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliião encontrado"));
+        return clienteRepository.findById(clienteId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliião encontrado"));
     }
 }
