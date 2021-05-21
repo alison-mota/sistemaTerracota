@@ -1,19 +1,19 @@
 package br.com.terracota.sistematerracota.clientes;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     private Long id;
     private String nome;
     private String telefone;
+    @Column(unique = true)
     private String email;
+    @Column(unique = true)
     private String documento;
 
     public Cliente(String nome, String telefone, String email, String documento) {
