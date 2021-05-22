@@ -1,6 +1,9 @@
 package br.com.terracota.sistematerracota.cliente;
 
+import br.com.terracota.sistematerracota.anotacoes.CPFOuCNPJ;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 
 @Entity
 public class Cliente {
@@ -11,8 +14,10 @@ public class Cliente {
     private Long id;
     private String nome;
     private String telefone;
+    @Email
     @Column(unique = true)
     private String email;
+    @CPFOuCNPJ
     @Column(unique = true)
     private String documento;
 

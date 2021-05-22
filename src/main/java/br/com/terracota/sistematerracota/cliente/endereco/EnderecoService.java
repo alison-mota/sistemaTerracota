@@ -13,7 +13,8 @@ public class EnderecoService {
     }
 
     public void converteESalva(EnderecoRequest enderecoRequest, Cliente cliente) {
-            Endereco endereco = enderecoRequest.toModel(cliente);
-            enderecoRepository.save(endereco);
+        Endereco endereco = enderecoRequest.toModel(cliente);
+        enderecoRepository.save(endereco);
+
     }
 }

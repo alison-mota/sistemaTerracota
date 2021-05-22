@@ -14,9 +14,9 @@ public class ClienteService {
     }
 
     public void validaDados(ClienteRequest request) {
-        if (clienteRepository.existByEmail(request.getEmail())) {
+        if (clienteRepository.existsByEmail(request.getEmail())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Já existe um cliente cadastrado com esse E-mail.");
-        } else if (clienteRepository.existByDocumento(request.getDocumento())) {
+        } else if (clienteRepository.existsByDocumento(request.getDocumento())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Já existe um cliente cadastrado com esse CPF ou CNPJ.");
         }
     }
