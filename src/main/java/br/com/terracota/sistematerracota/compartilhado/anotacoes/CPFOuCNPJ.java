@@ -1,4 +1,4 @@
-package br.com.terracota.sistematerracota.anotacoes;
+package br.com.terracota.sistematerracota.compartilhado.anotacoes;
 
 import org.hibernate.validator.constraints.CompositionType;
 import org.hibernate.validator.constraints.ConstraintComposition;

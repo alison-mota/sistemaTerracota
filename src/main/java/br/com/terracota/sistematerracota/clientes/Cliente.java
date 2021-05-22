@@ -1,6 +1,4 @@
-package br.com.terracota.sistematerracota.cliente;
-
-import br.com.terracota.sistematerracota.anotacoes.CPFOuCNPJ;
+package br.com.terracota.sistematerracota.clientes;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -19,12 +17,14 @@ public class Cliente {
     @Email
     @Column(unique = true)
     private String email;
+    private String origemCliente;
 
-    public Cliente(String nome, String telefone, String email, String documento) {
+    public Cliente(String nome, String telefone, String email, String documento, String origemCliente) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.documento = documento;
+        this.origemCliente = origemCliente;
     }
 
     @Deprecated

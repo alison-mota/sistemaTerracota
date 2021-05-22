@@ -1,4 +1,4 @@
-package br.com.terracota.sistematerracota.cliente;
+package br.com.terracota.sistematerracota.clientes;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

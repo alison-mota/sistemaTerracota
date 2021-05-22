@@ -1,4 +1,4 @@
-package br.com.terracota.sistematerracota.cliente;
+package br.com.terracota.sistematerracota.clientes;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
