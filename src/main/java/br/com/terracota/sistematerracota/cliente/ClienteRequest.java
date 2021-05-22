@@ -32,6 +32,6 @@ public class ClienteRequest {
     }
 
     public Cliente toModel() {
-        return new Cliente(nome, documento, telefone, email);
+        return new Cliente(nome, telefone, email, documento);
     }
 }

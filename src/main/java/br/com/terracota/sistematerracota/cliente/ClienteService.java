@@ -21,10 +21,9 @@ public class ClienteService {
         }
     }
 
-    public Cliente converteESalva(ClienteRequest request) {
+    public void converteESalva(ClienteRequest request) {
         Cliente cliente = request.toModel();
         clienteRepository.save(cliente);
-        return cliente;
     }
 
     // Método que irá localizar o cliente e retornará uma exceção caso não encontre

@@ -13,13 +13,12 @@ public class Cliente {
     @Column(updatable = false)
     private Long id;
     private String nome;
+    @Column(unique = true)
+    private String documento;
     private String telefone;
     @Email
     @Column(unique = true)
     private String email;
-    @CPFOuCNPJ
-    @Column(unique = true)
-    private String documento;
 
     public Cliente(String nome, String telefone, String email, String documento) {
         this.nome = nome;
