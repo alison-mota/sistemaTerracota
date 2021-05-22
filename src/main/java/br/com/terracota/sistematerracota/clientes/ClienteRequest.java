@@ -4,6 +4,7 @@ import br.com.terracota.sistematerracota.compartilhado.anotacoes.CPFOuCNPJ;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class ClienteRequest {
 
@@ -15,6 +16,8 @@ public class ClienteRequest {
     @Email
     private String email;
     private String origemCliente;
+    @NotNull
+    private Boolean ativo;
 
     public String getNome() {
         return nome;
@@ -37,6 +40,6 @@ public class ClienteRequest {
     }
 
     public Cliente toModel() {
-        return new Cliente(nome, telefone, email, documento, origemCliente);
+        return new Cliente(nome, telefone, email, documento, origemCliente, ativo);
     }
 }

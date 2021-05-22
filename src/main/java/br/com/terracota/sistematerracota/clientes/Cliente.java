@@ -2,6 +2,7 @@ package br.com.terracota.sistematerracota.clientes;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Cliente {
@@ -18,13 +19,16 @@ public class Cliente {
     @Column(unique = true)
     private String email;
     private String origemCliente;
+    @NotNull
+    private Boolean ativo;
 
-    public Cliente(String nome, String telefone, String email, String documento, String origemCliente) {
+    public Cliente(String nome, String telefone, String email, String documento, String origemCliente, Boolean ativo) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.documento = documento;
         this.origemCliente = origemCliente;
+        this.ativo = ativo;
     }
 
     @Deprecated
