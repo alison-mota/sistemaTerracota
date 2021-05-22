@@ -18,7 +18,17 @@ public class EmpresaRequest {
     private String email;
     private String site;
     private Boolean ativo;
-    private EnderecoEmpresa enderecoLoja;
+    private String rua;
+    private String numero;
+    private String bairro;
+    private String cidade;
+    private String cep;
+    private String complemento;
+
+    public Empresa toModel() {
+        EnderecoEmpresa enderecoEmpresa = new EnderecoEmpresa(rua, numero, bairro, cidade, cep, complemento);
+        return new Empresa(nomeFantasia, razaoSocial, cnpj, telefone, email, site, ativo, enderecoEmpresa);
+    }
 
     public String getNomeFantasia() {
         return nomeFantasia;
@@ -46,5 +56,29 @@ public class EmpresaRequest {
 
     public Boolean getAtivo() {
         return ativo;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public String getComplemento() {
+        return complemento;
     }
 }

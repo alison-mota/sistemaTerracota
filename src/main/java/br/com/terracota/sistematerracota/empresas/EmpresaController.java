@@ -1,5 +1,7 @@
 package br.com.terracota.sistematerracota.empresas;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +20,9 @@ public class EmpresaController {
     }
 
     @PostMapping
-    public void novaLoja(@Valid @RequestBody EmpresaRequest lojaRequest) {
+    public ResponseEntity<String> novaLoja(@Valid @RequestBody EmpresaRequest lojaRequest) {
 
         lojaService.converteESalva(lojaRequest);
-
+        return ResponseEntity.status(HttpStatus.CREATED).body("Empresa cadastrada.");
     }
 }

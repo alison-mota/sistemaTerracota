@@ -26,9 +26,18 @@ public class Empresa {
     @NotNull
     private Boolean ativo;
     @Embedded
-    private EnderecoEmpresa enderecoLoja;
+    private EnderecoEmpresa enderecoEmpresa;
 
-
+    public Empresa(String nomeFantasia, String razaoSocial, String cnpj, String telefone, String email, String site, Boolean ativo, EnderecoEmpresa enderecoEmpresa) {
+        this.nomeFantasia = nomeFantasia;
+        this.razaoSocial = razaoSocial;
+        this.cnpj = cnpj;
+        this.telefone = telefone;
+        this.email = email;
+        this.site = site;
+        this.ativo = ativo;
+        this.enderecoEmpresa = enderecoEmpresa;
+    }
 
     @Deprecated
     public Empresa() {

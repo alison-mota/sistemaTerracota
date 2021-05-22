@@ -5,14 +5,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmpresaService {
 
-    private final EmpresaRepository lojaRepository;
+    private final EmpresaRepository empresaRepository;
 
     public EmpresaService(EmpresaRepository lojaRepository) {
-        this.lojaRepository = lojaRepository;
+        this.empresaRepository = lojaRepository;
     }
 
 
-    public void converteESalva(EmpresaRequest lojaRequest) {
+    public void converteESalva(EmpresaRequest empresaRequest) {
+        Empresa empresa = empresaRequest.toModel();
+        empresaRepository.save(empresa);
 
     }
 }
