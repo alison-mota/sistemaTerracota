@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.br.CNPJ;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -20,7 +21,6 @@ public class Fornecedor {
     private String nomeFantasia;
     private String razaoSocial;
     @CNPJ
-    @Column(unique = true)
     private String cnpj;
     private String telefone;
     @Email
@@ -31,6 +31,7 @@ public class Fornecedor {
     private Endereco endereco;
     @Column(updatable = false)
     private LocalDateTime dataCriacao = LocalDateTime.now();
+    @NotNull
     @ManyToOne
     private Empresa empresa;
 

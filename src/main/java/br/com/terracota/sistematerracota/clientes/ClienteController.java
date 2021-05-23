@@ -26,8 +26,8 @@ public class ClienteController {
         // Localiza e retorna um objeto tipo empresa ou uma exception
         Empresa empresa = empresaService.validaEmpresa(empresaId);
 
-        // Valida se já existe um Cliente cadastrado nesta em presa com o CPF, CNPJ ou Email.
-        clienteService.validaClienteUnico(clienteRequest, empresa);
+        // Valida se já existe um Cliente cadastrado nesta empresa com o CPF, CNPJ ou Email.
+        clienteService.validaClienteUnico(clienteRequest, empresaId);
 
         // Converte o objeto para um Cliente e salva no banco.
         clienteService.converteESalva(clienteRequest, empresa);

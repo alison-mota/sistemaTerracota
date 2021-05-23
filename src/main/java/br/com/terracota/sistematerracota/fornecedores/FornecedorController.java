@@ -23,11 +23,11 @@ public class FornecedorController {
     @PostMapping("/{empresaId}")
     public ResponseEntity<String> novoFornecedor(@Valid @RequestBody FornecedorRequest fornecedorRequest, @PathVariable Long empresaId){
 
-        // Valida se existe um fornecedor com o mesmo CNPJ, encerrando o código com Exception.
-        fornecedorService.validaFornecedorUnico(fornecedorRequest);
-
         // Valida e retorna e empresa ou exception se não encontrar
         Empresa empresa = empresaService.validaEmpresa(empresaId);
+
+        // Valida se existe um fornecedor com o mesmo CNPJ, encerrando o código com Exception.
+        fornecedorService.validaFornecedorUnico(fornecedorRequest, empresaId);
 
         // Converte para um objeto Fornecedor e salva no banco.
         fornecedorService.converteESalva(fornecedorRequest, empresa);

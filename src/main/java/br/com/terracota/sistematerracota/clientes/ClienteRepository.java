@@ -10,5 +10,5 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
     boolean existsByDocumento(String documento);
 
-    boolean existsByEmpresa(Empresa empresa);
+    boolean existsByEmpresaId(Long empresa);
 }

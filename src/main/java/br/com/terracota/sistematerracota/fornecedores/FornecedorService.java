@@ -14,8 +14,8 @@ public class FornecedorService {
         this.fornecedorRepository = fornecedorRepository;
     }
 
-    public void validaFornecedorUnico(FornecedorRequest fornecedorRequest) {
-        if(fornecedorRepository.existsByCnpj(fornecedorRequest.getCnpj())){
+    public void validaFornecedorUnico(FornecedorRequest fornecedorRequest, Long empresa) {
+        if(fornecedorRepository.existsByCnpj(fornecedorRequest.getCnpj()) && fornecedorRepository.existsByEmpresaId(empresa)){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Já existe um fornecedor com esse CNPJ");
         }
     }

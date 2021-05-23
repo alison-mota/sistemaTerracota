@@ -15,10 +15,11 @@ public class ClienteService {
         this.clienteRepository = clienteRepository;
     }
 
-    public void validaClienteUnico(ClienteRequest request, Empresa empresa) {
-        if (clienteRepository.existsByEmail(request.getEmail()) && clienteRepository.existsByEmpresa(empresa)) {
+    public void validaClienteUnico(ClienteRequest request, Long empresa) {
+        if (clienteRepository.existsByEmail(request.getEmail()) && clienteRepository.existsByEmpresaId(empresa)) {
+            System.out.println(empresa);
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Já existe um cliente cadastrado com esse E-mail.");
-        } else if (clienteRepository.existsByDocumento(request.getDocumento()) && clienteRepository.existsByEmpresa(empresa)) {
+        } else if (clienteRepository.existsByDocumento(request.getDocumento()) && clienteRepository.existsByEmpresaId(empresa)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Já existe um cliente cadastrado com esse CPF ou CNPJ.");
         }
     }

@@ -5,6 +5,7 @@ import br.com.terracota.sistematerracota.enderecos.Endereco;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -15,16 +16,15 @@ public class Cliente {
     @Column(updatable = false)
     private Long id;
     private String nome;
-    @Column(unique = true)
     private String documento;
     private String telefone;
     @Email
-    @Column(unique = true)
     private String email;
     private String origemCliente;
     private Boolean ativo = Boolean.TRUE;
     @ManyToOne
     private Endereco endereco;
+    @NotNull
     @ManyToOne
     private Empresa empresa;
     @Column(updatable = false)
