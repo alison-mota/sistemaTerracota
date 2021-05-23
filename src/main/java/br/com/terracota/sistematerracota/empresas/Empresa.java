@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Entity
 public class Empresa {
@@ -26,18 +27,19 @@ public class Empresa {
     private String email;
     private String site;
     @NotNull
-    private Boolean ativo;
+    private Boolean ativo = Boolean.TRUE;
     @ManyToOne
     private Endereco endereco;
+    @Column(updatable = false)
+    private final LocalDateTime dataCriacao = LocalDateTime.now();
 
-    public Empresa(String nomeFantasia, String razaoSocial, String cnpj, String telefone, String email, String site, Boolean ativo) {
+    public Empresa(String nomeFantasia, String razaoSocial, String cnpj, String telefone, String email, String site) {
         this.nomeFantasia = nomeFantasia;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
         this.telefone = telefone;
         this.email = email;
         this.site = site;
-        this.ativo = ativo;
     }
 
     @Deprecated

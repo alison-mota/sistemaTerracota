@@ -2,6 +2,7 @@ package br.com.terracota.sistematerracota.empresas;
 
 import org.hibernate.validator.constraints.br.CNPJ;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
@@ -11,6 +12,7 @@ public class EmpresaRequest {
     private String nomeFantasia;
     private String razaoSocial;
     @CNPJ
+    @Column(unique = true)
     private String cnpj;
     private String telefone;
     @Email
@@ -19,7 +21,7 @@ public class EmpresaRequest {
     private Boolean ativo;
 
     public Empresa toModel() {
-        return new Empresa(nomeFantasia, razaoSocial, cnpj, telefone, email, site, ativo);
+        return new Empresa(nomeFantasia, razaoSocial, cnpj, telefone, email, site);
     }
 
     public String getNomeFantasia() {

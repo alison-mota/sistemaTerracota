@@ -1,10 +1,10 @@
 package br.com.terracota.sistematerracota.fornecedores;
 
+import br.com.terracota.sistematerracota.empresas.Empresa;
 import org.hibernate.validator.constraints.br.CNPJ;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 public class FornecedorRequest {
 
@@ -17,8 +17,11 @@ public class FornecedorRequest {
     @Email
     private String email;
     private String site;
-    @NotNull
     private Boolean ativo;
+
+    public Fornecedor toModel(Empresa empresa) {
+        return new Fornecedor(nomeFantasia, razaoSocial, cnpj, telefone, email, site, empresa);
+    }
 
     public String getNomeFantasia() {
         return nomeFantasia;
@@ -46,9 +49,5 @@ public class FornecedorRequest {
 
     public Boolean getAtivo() {
         return ativo;
-    }
-
-    public Fornecedor toModel() {
-        return new Fornecedor(nomeFantasia, razaoSocial, cnpj, telefone, email, site, ativo);
     }
 }

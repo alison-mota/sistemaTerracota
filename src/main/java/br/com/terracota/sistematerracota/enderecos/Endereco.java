@@ -1,6 +1,7 @@
 package br.com.terracota.sistematerracota.enderecos;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class Endereco {
@@ -15,6 +16,8 @@ public class Endereco {
     private String cidade;
     private String cep;
     private String complemento;
+    @Column(updatable = false)
+    private LocalDateTime dataCriacao = LocalDateTime.now();
 
     public Endereco(String rua, String numero, String bairro, String cidade, String cep, String complemento) {
         this.rua = rua;

@@ -1,11 +1,10 @@
 package br.com.terracota.sistematerracota.fornecedores;
 
+import br.com.terracota.sistematerracota.empresas.Empresa;
+import br.com.terracota.sistematerracota.empresas.EmpresaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -14,19 +13,24 @@ import javax.validation.Valid;
 public class FornecedorController {
 
     private final FornecedorService fornecedorService;
+    private final EmpresaService empresaService;
 
-    public FornecedorController(FornecedorService fornecedorService) {
+    public FornecedorController(FornecedorService fornecedorService, EmpresaService empresaService) {
         this.fornecedorService = fornecedorService;
+        this.empresaService = empresaService;
     }
 
-    @PostMapping
-    public ResponseEntity<String> novoFornecedor(@Valid @RequestBody FornecedorRequest fornecedorRequest){
+    @PostMapping("/{empresaId}")
+    public ResponseEntity<String> novoFornecedor(@Valid @RequestBody FornecedorRequest fornecedorRequest, @PathVariable Long empresaId){
 
         // Valida se existe um fornecedor com o mesmo CNPJ, encerrando o código com Exception.
         fornecedorService.validaFornecedorUnico(fornecedorRequest);
 
+        // Valida e retorna e empresa ou exception se não encontrar
+        Empresa empresa = empresaService.validaEmpresa(empresaId);
+
         // Converte para um objeto Fornecedor e salva no banco.
-        fornecedorService.converteESalva(fornecedorRequest);
+        fornecedorService.converteESalva(fornecedorRequest, empresa);
 
         return ResponseEntity.status(HttpStatus.CREATED).body("Fornecedor cadastrado");
     }

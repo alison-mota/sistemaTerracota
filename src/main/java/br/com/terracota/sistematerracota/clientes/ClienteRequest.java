@@ -1,11 +1,10 @@
 package br.com.terracota.sistematerracota.clientes;
 
 import br.com.terracota.sistematerracota.compartilhado.anotacoes.CPFOuCNPJ;
-import br.com.terracota.sistematerracota.enderecos.Endereco;
+import br.com.terracota.sistematerracota.empresas.Empresa;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 public class ClienteRequest {
 
@@ -17,7 +16,6 @@ public class ClienteRequest {
     @Email
     private String email;
     private String origemCliente;
-    @NotNull
     private Boolean ativo;
 
     public String getNome() {
@@ -40,7 +38,7 @@ public class ClienteRequest {
         return origemCliente;
     }
 
-    public Cliente toModel() {
-        return new Cliente(nome, telefone, email, documento, origemCliente, ativo);
+    public Cliente toModel(Empresa empresa) {
+        return new Cliente(nome, telefone, email, documento, origemCliente, empresa);
     }
 }

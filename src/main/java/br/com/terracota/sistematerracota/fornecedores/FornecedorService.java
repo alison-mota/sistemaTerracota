@@ -1,5 +1,6 @@
 package br.com.terracota.sistematerracota.fornecedores;
 
+import br.com.terracota.sistematerracota.empresas.Empresa;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -19,8 +20,8 @@ public class FornecedorService {
         }
     }
 
-    public void converteESalva(FornecedorRequest fornecedorRequest) {
-        Fornecedor fornecedor = fornecedorRequest.toModel();
+    public void converteESalva(FornecedorRequest fornecedorRequest, Empresa empresa) {
+        Fornecedor fornecedor = fornecedorRequest.toModel(empresa);
         fornecedorRepository.save(fornecedor);
     }
 }

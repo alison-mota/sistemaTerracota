@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("api/v1/loja")
+@RequestMapping("api/v1/empresa")
 public class EmpresaController {
 
     private final EmpresaService empresaService;
@@ -20,9 +20,13 @@ public class EmpresaController {
     }
 
     @PostMapping
-    public ResponseEntity<String> novaLoja(@Valid @RequestBody EmpresaRequest lojaRequest) {
+    public ResponseEntity<String> novaEmpresa(@Valid @RequestBody EmpresaRequest empresaRequest) {
 
-        empresaService.converteESalva(lojaRequest);
+        // Valida se já existe uma empresa cadastrada com o CNPJ da requisição.
+        empresaService.validaEmpresaUnica(empresaRequest);
+
+        // Converte para um objeto tipo Empresa e salva no banco.
+        empresaService.converteESalva(empresaRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body("Empresa cadastrada.");
     }
 }

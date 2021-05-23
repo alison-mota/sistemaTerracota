@@ -1,11 +1,10 @@
 package br.com.terracota.sistematerracota.clientes;
 
+import br.com.terracota.sistematerracota.empresas.Empresa;
+import br.com.terracota.sistematerracota.empresas.EmpresaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -14,19 +13,24 @@ import javax.validation.Valid;
 public class ClienteController {
 
     private final ClienteService clienteService;
+    private final EmpresaService empresaService;
 
-    public ClienteController(ClienteService clienteService) {
+    public ClienteController(ClienteService clienteService, EmpresaService empresaService) {
         this.clienteService = clienteService;
+        this.empresaService = empresaService;
     }
 
-    @PostMapping
-    public ResponseEntity<String> novoCliente(@Valid @RequestBody ClienteRequest clienteRequest) {
+    @PostMapping("/{empresaId}")
+    public ResponseEntity<String> novoCliente(@Valid @RequestBody ClienteRequest clienteRequest, @PathVariable Long empresaId) {
 
-        // Valida se já existe um Cliente cadastrado com o CPF, CNPJ ou Email.
-        clienteService.validaClienteUnico(clienteRequest);
+        // Localiza e retorna um objeto tipo empresa ou uma exception
+        Empresa empresa = empresaService.validaEmpresa(empresaId);
+
+        // Valida se já existe um Cliente cadastrado nesta em presa com o CPF, CNPJ ou Email.
+        clienteService.validaClienteUnico(clienteRequest, empresa);
 
         // Converte o objeto para um Cliente e salva no banco.
-        clienteService.converteESalva(clienteRequest);
+        clienteService.converteESalva(clienteRequest, empresa);
 
         return ResponseEntity.status(HttpStatus.CREATED).body("Cliente cadastrado");
     }
