@@ -1,4 +1,4 @@
-package br.com.terracota.sistematerracota.empresas;
+package br.com.terracota.sistematerracota.fornecedores;
 
 import br.com.terracota.sistematerracota.enderecos.Endereco;
 import org.hibernate.validator.constraints.br.CNPJ;
@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Empresa {
+public class Fornecedor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,7 +30,7 @@ public class Empresa {
     @ManyToOne
     private Endereco endereco;
 
-    public Empresa(String nomeFantasia, String razaoSocial, String cnpj, String telefone, String email, String site, Boolean ativo) {
+    public Fornecedor(String nomeFantasia, String razaoSocial, String cnpj, String telefone, String email, String site, Boolean ativo) {
         this.nomeFantasia = nomeFantasia;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
@@ -41,6 +41,6 @@ public class Empresa {
     }
 
     @Deprecated
-    public Empresa() {
+    public Fornecedor() {
     }
 }
