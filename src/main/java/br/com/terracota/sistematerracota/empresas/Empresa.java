@@ -1,6 +1,6 @@
 package br.com.terracota.sistematerracota.empresas;
 
-import br.com.terracota.sistematerracota.empresas.dadosAdicionais.EnderecoEmpresa;
+import br.com.terracota.sistematerracota.enderecos.Endereco;
 import org.hibernate.validator.constraints.br.CNPJ;
 
 import javax.persistence.*;
@@ -25,10 +25,10 @@ public class Empresa {
     private String site;
     @NotNull
     private Boolean ativo;
-    @Embedded
-    private EnderecoEmpresa enderecoEmpresa;
+    @ManyToOne
+    private Endereco endereco;
 
-    public Empresa(String nomeFantasia, String razaoSocial, String cnpj, String telefone, String email, String site, Boolean ativo, EnderecoEmpresa enderecoEmpresa) {
+    public Empresa(String nomeFantasia, String razaoSocial, String cnpj, String telefone, String email, String site, Boolean ativo) {
         this.nomeFantasia = nomeFantasia;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
@@ -36,7 +36,6 @@ public class Empresa {
         this.email = email;
         this.site = site;
         this.ativo = ativo;
-        this.enderecoEmpresa = enderecoEmpresa;
     }
 
     @Deprecated

@@ -1,10 +1,14 @@
-package br.com.terracota.sistematerracota.empresas.dadosAdicionais;
+package br.com.terracota.sistematerracota.enderecos;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 
-@Embeddable
-public class EnderecoEmpresa {
+@Entity
+public class Endereco {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
+    private Long id;
     private String rua;
     private String numero;
     private String bairro;
@@ -12,7 +16,7 @@ public class EnderecoEmpresa {
     private String cep;
     private String complemento;
 
-    public EnderecoEmpresa(String rua, String numero, String bairro, String cidade, String cep, String complemento) {
+    public Endereco(String rua, String numero, String bairro, String cidade, String cep, String complemento) {
         this.rua = rua;
         this.numero = numero;
         this.bairro = bairro;
@@ -22,6 +26,6 @@ public class EnderecoEmpresa {
     }
 
     @Deprecated
-    public EnderecoEmpresa() {
+    public Endereco() {
     }
 }

@@ -1,6 +1,5 @@
-package br.com.terracota.sistematerracota.clientes.endereco;
+package br.com.terracota.sistematerracota.enderecos;
 
-import br.com.terracota.sistematerracota.clientes.Cliente;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,8 +11,8 @@ public class EnderecoService {
         this.enderecoRepository = enderecoRepository;
     }
 
-    public void converteESalva(EnderecoRequest enderecoRequest, Cliente cliente) {
-        Endereco endereco = enderecoRequest.toModel(cliente);
+    public void converteESalva(EnderecoRequest enderecoRequest) {
+        Endereco endereco = enderecoRequest.toModel();
         enderecoRepository.save(endereco);
 
     }

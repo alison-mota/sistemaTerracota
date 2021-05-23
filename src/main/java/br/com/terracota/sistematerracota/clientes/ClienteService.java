@@ -1,5 +1,6 @@
 package br.com.terracota.sistematerracota.clientes;
 
+import br.com.terracota.sistematerracota.enderecos.Endereco;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -13,7 +14,7 @@ public class ClienteService {
         this.clienteRepository = clienteRepository;
     }
 
-    public void validaDados(ClienteRequest request) {
+    public void validaClienteUnico(ClienteRequest request) {
         if (clienteRepository.existsByEmail(request.getEmail())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Já existe um cliente cadastrado com esse E-mail.");
         } else if (clienteRepository.existsByDocumento(request.getDocumento())) {
@@ -26,9 +27,4 @@ public class ClienteService {
         clienteRepository.save(cliente);
     }
 
-    // Método que irá localizar o cliente e retornará uma exceção caso não encontre
-
-    public Cliente localizaCliente(Long clienteId) {
-        return clienteRepository.findById(clienteId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliião encontrado"));
-    }
 }

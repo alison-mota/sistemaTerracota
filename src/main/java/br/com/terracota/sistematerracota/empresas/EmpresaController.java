@@ -13,16 +13,16 @@ import javax.validation.Valid;
 @RequestMapping("api/v1/loja")
 public class EmpresaController {
 
-    private final EmpresaService lojaService;
+    private final EmpresaService empresaService;
 
     public EmpresaController(EmpresaService lojaService) {
-        this.lojaService = lojaService;
+        this.empresaService = lojaService;
     }
 
     @PostMapping
     public ResponseEntity<String> novaLoja(@Valid @RequestBody EmpresaRequest lojaRequest) {
 
-        lojaService.converteESalva(lojaRequest);
+        empresaService.converteESalva(lojaRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body("Empresa cadastrada.");
     }
 }

@@ -23,7 +23,7 @@ public class ClienteController {
     public ResponseEntity<String> novoCliente(@Valid @RequestBody ClienteRequest clienteRequest) {
 
         // Valida se já existe um Cliente cadastrado com o CPF, CNPJ ou Email.
-        clienteService.validaDados(clienteRequest);
+        clienteService.validaClienteUnico(clienteRequest);
 
         // Converte o objeto para um Cliente e salva no banco.
         clienteService.converteESalva(clienteRequest);

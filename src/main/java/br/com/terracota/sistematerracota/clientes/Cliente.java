@@ -1,5 +1,7 @@
 package br.com.terracota.sistematerracota.clientes;
 
+import br.com.terracota.sistematerracota.enderecos.Endereco;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -21,6 +23,8 @@ public class Cliente {
     private String origemCliente;
     @NotNull
     private Boolean ativo;
+    @ManyToOne
+    private Endereco endereco;
 
     public Cliente(String nome, String telefone, String email, String documento, String origemCliente, Boolean ativo) {
         this.nome = nome;

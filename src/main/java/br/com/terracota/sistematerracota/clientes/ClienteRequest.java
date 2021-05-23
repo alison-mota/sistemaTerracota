@@ -1,6 +1,7 @@
 package br.com.terracota.sistematerracota.clientes;
 
 import br.com.terracota.sistematerracota.compartilhado.anotacoes.CPFOuCNPJ;
+import br.com.terracota.sistematerracota.enderecos.Endereco;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
