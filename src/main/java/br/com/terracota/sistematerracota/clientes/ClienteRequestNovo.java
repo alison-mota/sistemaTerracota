@@ -6,7 +6,7 @@ import br.com.terracota.sistematerracota.empresas.Empresa;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-public class ClienteRequest {
+public class ClienteRequestNovo {
 
     @NotBlank
     private String nome;
